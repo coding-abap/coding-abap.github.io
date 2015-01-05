@@ -2,7 +2,7 @@
 
 Personal Abap blog
 
-See Coding Abap in action with the main (site)[http://coding-abap.github.io/].
+See Coding Abap in action with the main [site](http://coding-abap.github.io/).
 
 ## Contents
 
