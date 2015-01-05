@@ -8,6 +8,16 @@ layout: default
   {{ content }}
 </div>
 
+<!-- Show tags at at the end of the post content-->
+<div>
+<span class="icon-tags"></span>
+  {% for tag in page.tags %}
+    <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>
+    {% if forloop.last != true %}
+    {% endif %}
+  {% endfor %}
+</div>
+
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
