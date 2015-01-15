@@ -1,7 +1,15 @@
 # Dependencies
-markdown:            kramdown
+#markdown: kramdown
+#kramdown:
+#  use_coderay: true
+#  input: GFM
+markdown: kramdown
 kramdown:
+  use_coderay: true
   input: GFM
+#markdown:            redcarpet
+#redcarpet:
+#  extensions: [footnotes]
 highlighter:         pygments
 
 # Permalinks
