@@ -16,4 +16,4 @@ To play with regular expressions in ABAP, see program `demo_regex_toy`
  * [Debuggex](https://www.debuggex.com)
 
 ### Source
- - _Regular Expressions (Regex) and its use in ABAP_ at [SAP IGNITE](http://sapignite.com/regex-in-abap/)
+ - _Regular Expressions (Regex) and its use in ABAP_ - [SAP IGNITE](http://sapignite.com/regex-in-abap/)
