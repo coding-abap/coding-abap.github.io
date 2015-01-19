@@ -86,7 +86,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : codingabap
     livefyre :
       site_id : 123
     intensedebate :
@@ -104,7 +104,7 @@ JB :
   analytics :
     provider : google
     google :
-        tracking_id : 'UA-123-12'
+        tracking_id : 'UA-58148769-2'
     getclicky :
       site_id :
     mixpanel :
