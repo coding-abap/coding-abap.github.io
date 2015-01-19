@@ -8,21 +8,23 @@ tags: [file, gui]
 Do you remember the exact string to set a file filter in ABAP file chooser?
 I don't, but class `cl_gui_frontend_services` has some nice predefined class atributes
 
- `FILETYPE_ALL` | `All Files (*.*)|*.*|`
- `FILETYPE_EXCEL` | `Microsoft Excel Files  (*.XLS;*.XLSX;*.XLSM)|*.XLS;*.XLSX;*.XLSM|`
- `FILETYPE_WORD` | `Microsoft Word Files (*.DOC;*.DOCX;*.DOCM)|*.DOC;*.DOCX;*.DOCM|`
- `FILETYPE_TEXT` | `Text Files (*.TXT)|*.TXT|`
- `FILETYPE_HTML` | `HTML files (*.HTML, *.HTM)|*.HTML;*.HTM|`
- `FILETYPE_RTF` | `RTF Files (*.RTF)|*.RTF|`
- `FILETYPE_XML` | `XML (*.XML)|*.XML|`
- `FILETYPE_POWERPOINT` | `Microsoft PowerPoint Files (*PPT;*.PPTX;*.PPTM)|*PPT;*.PPTX;*.PPTM|`
+```abap
+FILETYPE_ALL = 'All Files (*.*)|*.*|'
+FILETYPE_EXCEL = 'Microsoft Excel Files (*.XLS;*.XLSX;*.XLSM)|*.XLS;*.XLSX;*.XLSM|'
+FILETYPE_WORD = 'Microsoft Word Files (*.DOC;*.DOCX;*.DOCM)|*.DOC;*.DOCX;*.DOCM|'
+FILETYPE_TEXT = 'Text Files (*.TXT)|*.TXT|'
+FILETYPE_HTML = 'HTML files (*.HTML, *.HTM)|*.HTML;*.HTM|'
+FILETYPE_RTF = 'RTF Files (*.RTF)|*.RTF|'
+FILETYPE_XML = 'XML (*.XML)|*.XML|'
+FILETYPE_POWERPOINT = 'Microsoft PowerPoint Files (*PPT;*.PPTX;*.PPTM)|*PPT;*.PPTX;*.PPTM|'
+```
 
-Used in this way
+Usage example
 
 ```abap
 cl_gui_frontend_services=>file_open_dialog(
   EXPORTING
-    file_filter             =  cl_gui_frontend_services=>filetype_excel
+    file_filter             =  cl_gui_frontend_services=>FILETYPE_EXCEL
     multiselection          =  space
   CHANGING
     file_table              =  lt_files
