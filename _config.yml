@@ -14,6 +14,7 @@ redcarpet:
 #
 title : Coding Abap
 tagline: Personal Abap blog
+paginate: 5
 author :
   name : diesire
   email : diesire@gmail.com
