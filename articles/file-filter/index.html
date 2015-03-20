@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>File Filter - Coding Abap
+    </title>
+    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Ramblings of an immor(t)al demigod">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/github.css">
+    <!--workaroud -> node highlight doesn't add hljs class to pre, so css fails-->
+    <script src="/js/highlight.pack.js"></script>
+  </head>
+  <body class="article-detail">
+    <div id="fadeout"></div>
+    <div id="flybar">
+      <div class="navigation">
+        <div class="button"><a id="logo" href="http://localhost:8080" alt="Coding Abap"><img src="http://localhost:8080/img/Coding Abap Logo Only.svg"></a></div>
+      </div>
+      <div class="navigation">
+        <div class="button"><span>Menu1</span></div>
+        <div class="contents menu"><a href="https://github.com/jnordberg/wintersmith">Wintersmith1</a><a href="https://github.com/jnordberg/wintersmith">Wintersmith2</a></div>
+      </div>
+      <div class="navigation">
+        <div class="button"><span>Menu2</span></div>
+        <div class="contents menu"><a href="https://github.com/jnordberg/wintersmith">Wintersmith3</a><a href="https://github.com/jnordberg/wintersmith">Wintersmith4</a></div>
+      </div>
+    </div>
+    <header class="header">
+      <div class="content-wrap">
+        <h1>File Filter</h1>
+        <p class="author">Written by <span class="author"><a href="mailto:diesire@gmail.com">Diesire</a></span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><h1 id="asdasdasd">asdasdasd</h1>
+<h3 id="sdfsdf">sdfsdf</h3>
+<p>Do you remember the exact string to set a file filter in <span class="caps">ABAP</span> file chooser? I don’t, but class <code>cl_gui_frontend_services</code> has some nice predefined class&nbsp;atributes</p>
+<hr>
+<pre><code class="lang-javascript"><span class="keyword">var</span> readFile = Promise.denodeify(<span class="built_in">require</span>(<span class="string">'fs'</span>).readFile);
+<span class="comment">// now `readFile` will return a promise rather than expecting a callback</span>
+
+<span class="function"><span class="keyword">function</span> <span class="title">readJSON</span><span class="params">(filename, callback)</span></span>{
+  <span class="comment">// If a callback is provided, call it with error as the first argument</span>
+  <span class="comment">// and result as the second argument, then return `undefined`.</span>
+  <span class="comment">// If no callback is provided, just return the promise.</span>
+  <span class="keyword">return</span> readFile(filename, <span class="string">'utf8'</span>).then(<span class="built_in"><span class="caps">JSON</span></span>.parse).nodeify(callback);
+}
+</code></pre>
+<pre><code class="lang-abap">FILETYPE_ALL = <span class="string">'All Files (*.*)|*.*|'</span>
+FILETYPE_EXCEL = <span class="string">'Microsoft Excel Files (*.<span class="caps">XLS</span>;*.XLSX;*.XLSM)|*.XLS;*.XLSX;*.XLSM|'</span>
+FILETYPE_WORD = <span class="string">'Microsoft Word Files (*.<span class="caps">DOC</span>;*.DOCX;*.DOCM)|*.DOC;*.DOCX;*.DOCM|'</span>
+FILETYPE_TEXT = <span class="string">'Text Files (*.<span class="caps">TXT</span>)|*.TXT|'</span>
+FILETYPE_HTML = <span class="string">'<span class="caps">HTML</span> files (*.HTML, *.HTM)|*.HTML;*.HTM|'</span>
+FILETYPE_RTF = <span class="string">'<span class="caps">RTF</span> Files (*.RTF)|*.RTF|'</span>
+FILETYPE_XML = <span class="string">'<span class="caps">XML</span> (*.XML)|*.XML|'</span>
+FILETYPE_POWERPOINT = <span class="string">'Microsoft PowerPoint Files (*<span class="caps">PPT</span>;*.PPTX;*.PPTM)|*PPT;*.PPTX;*.PPTM|'</span>
+</code></pre>
+<p>Usage&nbsp;example</p>
+<pre><code class="lang-abap">cl_gui_frontend_services=&gt;file_open_dialog(
+  <span class="simple"><span class="keyword"><span class="caps">EXPORTING</span></span></span>
+    file_filter             =  cl_gui_frontend_services=&gt;FILETYPE_EXCEL
+    multiselection          =  <span class="operator"><span class="keyword">space</span></span>
+  <span class="simple"><span class="keyword"><span class="caps">CHANGING</span></span></span>
+    file_table              =  lt_files
+    rc                      =  lv_subrc
+    user_action             =  lv_user_action
+  <span class="simple"><span class="keyword"><span class="caps">EXCEPTIONS</span></span></span>
+    file_open_dialog_failed = <span class="number">1</span>
+    cntl_error              = <span class="number">2</span>
+    error_no_gui            = <span class="number">3</span>
+    not_supported_by_gui    = <span class="number">4</span>
+    <span class="caps">OTHERS</span>                  = <span class="number">5</span> ).
+</code></pre>
+<pre><code class="lang-abap"><span class="comment">*----------------------------------------------------------------------*</span>
+<span class="comment">*  Program Title       : Nicelabel Re-Print</span>
+<span class="comment">*  Author              : Pablo Escalada Gómez</span>
+<span class="comment">*  Date                : 02/19/2015</span>
+<span class="comment">*  <span class="caps">SAP</span> Change Request #: ECDK937957</span>
+<span class="comment">*----------------------------------------------------------------------*</span>
+<span class="comment">*  Description:        : Nicelabel print program</span>
+<span class="comment">*  Type:               : Report</span>
+<span class="comment">*  Run Frequency:      : On request</span>
+<span class="comment">*  Development Class:  : <span class="caps">ZDEV</span></span>
+<span class="comment">*  Requirement Ref.    : <span class="caps">EN2389</span></span>
+<span class="comment">*----------------------------------------------------------------------*</span>
+
+<span class="simple"><span class="keyword"><span class="caps">REPORT</span></span></span>  zfwmr_fglabel <span class="multiword"><span class="keyword"><span class="caps">MESSAGE</span>-ID</span></span> zfwm
+  <span class="simple"><span class="keyword"><span class="caps">NO</span></span></span> <span class="simple"><span class="keyword"><span class="caps">STANDARD</span></span></span> <span class="simple"><span class="keyword"><span class="caps">PAGE</span></span></span> <span class="simple"><span class="keyword"><span class="caps">HEADING</span></span></span>
+  <span class="multiword"><span class="keyword"><span class="caps">LINE</span>-SIZE</span></span>  <span class="number">132</span>
+  <span class="multiword"><span class="keyword"><span class="caps">LINE</span>-COUNT</span></span> <span class="number">65</span>.
+
+
+<span class="comment">*--------------------------------------------------------------------*</span>
+<span class="comment">* <span class="caps">INCLUDES</span></span>
+<span class="comment">*--------------------------------------------------------------------*</span>
+<span class="simple"><span class="keyword"><span class="caps">INCLUDE</span></span></span> zfwmr_fglabel_top01.
+<span class="simple"><span class="keyword"><span class="caps">INCLUDE</span></span></span> zfwmr_fglabel_sel01.
+<span class="simple"><span class="keyword"><span class="caps">INCLUDE</span></span></span> zfwmr_fglabel_cls01.
+
+
+<span class="comment">*--------------------------------------------------------------------*</span>
+<span class="comment">* <span class="caps">AT</span> SELECTION-SCREEN</span>
+<span class="comment">*--------------------------------------------------------------------*</span>
+<span class="simple"><span class="keyword"><span class="caps">AT</span></span></span> <span class="multiword"><span class="keyword"><span class="caps">SELECTION</span>-SCREEN</span></span> <span class="simple"><span class="keyword"><span class="caps">ON</span></span></span> <span class="multiword"><span class="keyword"><span class="caps">VALUE</span>-REQUEST</span></span> <span class="simple"><span class="keyword"><span class="caps">FOR</span></span></span> p_pname.
+
+  zcl_fwm_fglabel=&gt;set_prntname_values(
+    <span class="simple"><span class="keyword"><span class="caps">EXPORTING</span></span></span>
+      iv_werks   = p_werks
+      iv_lpla    = p_lpla
+      iv_plac    = p_plac
+      iv_listbox = <span class="string">'P_PNAME'</span>
+  ).
+
+
+<span class="comment">*--------------------------------------------------------------------*</span>
+<span class="comment">* <span class="caps">START</span>-OF-SELECTION.</span>
+<span class="comment">*--------------------------------------------------------------------*</span>
+<span class="multiword"><span class="keyword"><span class="caps">START</span>-OF-SELECTION</span>.</span>
+  <span class="simple"><span class="keyword"><span class="caps">TRY</span></span></span> .
+      <span class="simple"><span class="keyword"><span class="caps">CREATE</span></span></span> <span class="simple"><span class="keyword"><span class="caps">OBJECT</span></span></span> go_lbl
+        <span class="simple"><span class="keyword"><span class="caps">EXPORTING</span></span></span>
+          iv_werks = p_werks
+          iv_lpla  = p_lpla
+          iv_plac  = p_plac
+          iv_pname = p_pname
+          iv_qty   = p_qty
+          ir_charg = so_charg[].
+
+      go_lbl-&gt;print( ).
+      go_lbl-&gt;get_messages( ).
+
+    <span class="simple"><span class="keyword"><span class="caps">CATCH</span></span></span> cx_operation <span class="simple"><span class="keyword"><span class="caps">INTO</span></span></span> go_ex_operation.
+      <span class="simple"><span class="keyword"><span class="caps">MESSAGE</span></span></span> go_ex_operation <span class="simple"><span class="keyword"><span class="caps">TYPE</span></span></span> <span class="string">'S'</span> <span class="caps">DISPLAY</span> <span class="simple"><span class="keyword"><span class="caps">LIKE</span></span></span> <span class="string">'E'</span>.
+  <span class="simple"><span class="keyword"><span class="caps">ENDTRY</span></span></span>.
+</code></pre>
+<p>Extra point for supporting <span class="caps">MS</span> Office multiple file&nbsp;extensions</p>
+<p><img src="/articles/file-filter/file_filter.png" alt="Excel file filter in action"></p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« Full blog</a></div>
+        <section class="about"><p>Wintersmith is made by <a href="http://johan-nordberg.com">Johan Nordberg</a> and licensed under the <a href="http://opensource.org/licenses/MIT">MIT-license</a>.
+This footer text can be edited in about.md</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat.</p>
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+dolore eu fugiat nulla pariatur.</p>
+<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+deserunt mollit anim id est laborum.</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2015 Coding Abap &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+    <!--workaroud -> node highlight doesn't add hljs class to pre, so css fails-->
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
