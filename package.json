@@ -3,7 +3,11 @@
     "moment": "2.3.x",
     "typogr": "0.5.x",
     "underscore": "1.4.x",
-    "wintersmith": "coding-abap/wintersmith"
+    "wintersmith": "./dependencies/wintersmith-2.1.2.tgz"
   },
-  "repository": "none"
+  "repository": "none",
+  "scripts": {
+    "preview": "node node_modules/wintersmith/bin/wintersmith preview",
+	"build": "node node_modules/wintersmith/bin/wintersmith build"
+  }
 }
