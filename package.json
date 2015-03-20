@@ -8,6 +8,7 @@
   "repository": "none",
   "scripts": {
     "preview": "node node_modules/wintersmith/bin/wintersmith preview",
-	"build": "node node_modules/wintersmith/bin/wintersmith build"
+	"build": "node node_modules/wintersmith/bin/wintersmith build",
+	"deploy":"cd build && git add -A && git commit -m \"commit\""
   }
 }
