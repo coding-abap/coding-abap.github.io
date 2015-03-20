@@ -14,20 +14,8 @@
       <pubDate>Wed, 14 Jan 2015 01:00:00 +0100</pubDate>
       <guid isPermaLink="true">http://localhost:8080/articles/file-filter/</guid>
       <author></author>
-      <description>&lt;h1 id=&quot;asdasdasd&quot;&gt;asdasdasd&lt;/h1&gt;
-&lt;h3 id=&quot;sdfsdf&quot;&gt;sdfsdf&lt;/h3&gt;
-&lt;p&gt;Do you remember the exact string to set a file filter in ABAP file chooser? I don’t, but class &lt;code&gt;cl_gui_frontend_services&lt;/code&gt; has some nice predefined class atributes&lt;/p&gt;
+      <description>&lt;p&gt;Do you remember the exact string to set a file filter in ABAP file chooser? I don’t, but class &lt;code&gt;cl_gui_frontend_services&lt;/code&gt; has some nice predefined class atributes&lt;/p&gt;
 &lt;hr&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; readFile = Promise.denodeify(&lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;'fs'&lt;/span&gt;).readFile);
-&lt;span class=&quot;comment&quot;&gt;// now `readFile` will return a promise rather than expecting a callback&lt;/span&gt;
-
-&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;readJSON&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(filename, callback)&lt;/span&gt;&lt;/span&gt;{
-  &lt;span class=&quot;comment&quot;&gt;// If a callback is provided, call it with error as the first argument&lt;/span&gt;
-  &lt;span class=&quot;comment&quot;&gt;// and result as the second argument, then return `undefined`.&lt;/span&gt;
-  &lt;span class=&quot;comment&quot;&gt;// If no callback is provided, just return the promise.&lt;/span&gt;
-  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; readFile(filename, &lt;span class=&quot;string&quot;&gt;'utf8'&lt;/span&gt;).then(&lt;span class=&quot;built_in&quot;&gt;JSON&lt;/span&gt;.parse).nodeify(callback);
-}
-&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-abap&quot;&gt;FILETYPE_ALL = &lt;span class=&quot;string&quot;&gt;'All Files (*.*)|*.*|'&lt;/span&gt;
 FILETYPE_EXCEL = &lt;span class=&quot;string&quot;&gt;'Microsoft Excel Files (*.XLS;*.XLSX;*.XLSM)|*.XLS;*.XLSX;*.XLSM|'&lt;/span&gt;
 FILETYPE_WORD = &lt;span class=&quot;string&quot;&gt;'Microsoft Word Files (*.DOC;*.DOCX;*.DOCM)|*.DOC;*.DOCX;*.DOCM|'&lt;/span&gt;
@@ -52,68 +40,6 @@ FILETYPE_POWERPOINT = &lt;span class=&quot;string&quot;&gt;'Microsoft PowerPoint
     error_no_gui            = &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;
     not_supported_by_gui    = &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;
     OTHERS                  = &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; ).
-&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code class=&quot;lang-abap&quot;&gt;&lt;span class=&quot;comment&quot;&gt;*----------------------------------------------------------------------*&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*  Program Title       : Nicelabel Re-Print&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*  Author              : Pablo Escalada Gómez&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*  Date                : 02/19/2015&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*  SAP Change Request #: ECDK937957&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*----------------------------------------------------------------------*&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*  Description:        : Nicelabel print program&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*  Type:               : Report&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*  Run Frequency:      : On request&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*  Development Class:  : ZDEV&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*  Requirement Ref.    : EN2389&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*----------------------------------------------------------------------*&lt;/span&gt;
-
-&lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;REPORT&lt;/span&gt;&lt;/span&gt;  zfwmr_fglabel &lt;span class=&quot;multiword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;MESSAGE-ID&lt;/span&gt;&lt;/span&gt; zfwm
-  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;NO&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;STANDARD&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;PAGE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;HEADING&lt;/span&gt;&lt;/span&gt;
-  &lt;span class=&quot;multiword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;LINE-SIZE&lt;/span&gt;&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;132&lt;/span&gt;
-  &lt;span class=&quot;multiword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;LINE-COUNT&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;65&lt;/span&gt;.
-
-
-&lt;span class=&quot;comment&quot;&gt;*--------------------------------------------------------------------*&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;* INCLUDES&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*--------------------------------------------------------------------*&lt;/span&gt;
-&lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INCLUDE&lt;/span&gt;&lt;/span&gt; zfwmr_fglabel_top01.
-&lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INCLUDE&lt;/span&gt;&lt;/span&gt; zfwmr_fglabel_sel01.
-&lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INCLUDE&lt;/span&gt;&lt;/span&gt; zfwmr_fglabel_cls01.
-
-
-&lt;span class=&quot;comment&quot;&gt;*--------------------------------------------------------------------*&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;* AT SELECTION-SCREEN&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*--------------------------------------------------------------------*&lt;/span&gt;
-&lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;AT&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;multiword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECTION-SCREEN&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;multiword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;VALUE-REQUEST&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FOR&lt;/span&gt;&lt;/span&gt; p_pname.
-
-  zcl_fwm_fglabel=&amp;gt;set_prntname_values(
-    &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;EXPORTING&lt;/span&gt;&lt;/span&gt;
-      iv_werks   = p_werks
-      iv_lpla    = p_lpla
-      iv_plac    = p_plac
-      iv_listbox = &lt;span class=&quot;string&quot;&gt;'P_PNAME'&lt;/span&gt;
-  ).
-
-
-&lt;span class=&quot;comment&quot;&gt;*--------------------------------------------------------------------*&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;* START-OF-SELECTION.&lt;/span&gt;
-&lt;span class=&quot;comment&quot;&gt;*--------------------------------------------------------------------*&lt;/span&gt;
-&lt;span class=&quot;multiword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;START-OF-SELECTION&lt;/span&gt;.&lt;/span&gt;
-  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;TRY&lt;/span&gt;&lt;/span&gt; .
-      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CREATE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;OBJECT&lt;/span&gt;&lt;/span&gt; go_lbl
-        &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;EXPORTING&lt;/span&gt;&lt;/span&gt;
-          iv_werks = p_werks
-          iv_lpla  = p_lpla
-          iv_plac  = p_plac
-          iv_pname = p_pname
-          iv_qty   = p_qty
-          ir_charg = so_charg[].
-
-      go_lbl-&amp;gt;print( ).
-      go_lbl-&amp;gt;get_messages( ).
-
-    &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CATCH&lt;/span&gt;&lt;/span&gt; cx_operation &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;INTO&lt;/span&gt;&lt;/span&gt; go_ex_operation.
-      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;MESSAGE&lt;/span&gt;&lt;/span&gt; go_ex_operation &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;TYPE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;'S'&lt;/span&gt; DISPLAY &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;LIKE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;'E'&lt;/span&gt;.
-  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ENDTRY&lt;/span&gt;&lt;/span&gt;.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Extra point for supporting MS Office multiple file extensions&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/articles/file-filter/file_filter.png&quot; alt=&quot;Excel file filter in action&quot;&gt;&lt;/p&gt;
