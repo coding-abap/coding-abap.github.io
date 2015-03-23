@@ -40,6 +40,6 @@ cl_gui_frontend_services=>file_open_dialog(
     OTHERS                  = 5 ).
 ```
 
-Extra point for supporting MS Office multiple file extensions
+Extra point for supporting multiple file extensions
 
 ![Excel file filter in action](file_filter.png)
