@@ -3,7 +3,7 @@
     "url": "http://coding-abap.github.io/",
     "name": "Coding Abap",
     "owner": "Coding Abap",
-    "description": "Ramblings of an immor(t)al demigod"
+    "description": "Abap blog"
   },
   "plugins": [
     "./plugins/paginator.coffee"
