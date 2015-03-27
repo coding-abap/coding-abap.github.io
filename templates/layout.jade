@@ -24,27 +24,36 @@ html(lang='en')
         
     div#fadeout
     
-    div#flybar
-      div.navigation
-        div.button
-          a#logo(href=locals.url, alt=locals.name)
+    nav#flybar
+      ul
+        li#logo
+          a(href=locals.url, alt=locals.name)
             img(src=locals.url+'/img/Coding Abap Logo Only.svg')
-        
-      div.navigation
-        div.button
-          span Menu1
-          
-        div.contents.menu
-          a(href='https://github.com/jnordberg/wintersmith') Wintersmith1
-          a(href='https://github.com/jnordberg/wintersmith') Wintersmith2
-      
-      div.navigation
-        div.button
-          span Menu2
-          
-        div.contents.menu
-          a(href='https://github.com/jnordberg/wintersmith') Wintersmith3
-          a(href='https://github.com/jnordberg/wintersmith') Wintersmith4
+              
+        li
+          a(href=locals.url+'/archive.html') Archive
+        //- li
+        //-   a(href=locals.url+'/archive.html') Wintersmith 1
+        //-   ul
+        //-     li
+        //-       a(href='https://github.com/jnordberg/wintersmith') Wintersmith 1.1
+        //-     li
+        //-       a(href='https://github.com/jnordberg/wintersmith') Wintersmith 1.2
+        //-       ul
+        //-         li
+        //-           a(href='https://github.com/jnordberg/wintersmith') Wintersmith 1.2.1
+        //-         li
+        //-           a(href='https://github.com/jnordberg/wintersmith') Wintersmith 1.2.2
+        //-     li
+        //-       a(href='https://github.com/jnordberg/wintersmith') Wintersmith 1.3
+        //-     li
+        //-       a(href='https://github.com/jnordberg/wintersmith') Wintersmith 1.4
+        //-       
+        //- li
+        //-   a(href='https://github.com/jnordberg/wintersmith') Wintersmith 2
+        //-   ul
+        //-     li
+        //-       a(href='https://github.com/jnordberg/wintersmith') Wintersmith 2.1
     
     header.header
       div.content-wrap
