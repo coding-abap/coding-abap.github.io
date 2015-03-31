@@ -3,7 +3,11 @@
     "url": "http://coding-abap.github.io",
     "name": "Coding Abap",
     "owner": "Coding Abap",
-    "description": "Abap blog"
+    "description": "Abap blog",
+	"integrations": {
+      "disqus": "codingabap",
+      "analytics": "UA-58148769-2"
+	}
   },
   "plugins": [
     "./plugins/paginator.coffee"

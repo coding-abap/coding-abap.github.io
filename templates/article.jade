@@ -22,4 +22,13 @@ block prepend footer
   div.nav
     a(href=contents.index.url) « Full blog
 
+  if locals.integrations.disqus
+    div#disqus_thread
 
+    script.
+      //- Disqus code snippet
+      (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//#{locals.integrations.disqus}.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
