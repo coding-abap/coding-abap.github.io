@@ -1,5 +1,7 @@
 ---
 template: article.jade
+author: diesire
+date: 2015-01-10
 title: Regular expressions
 tags: [string, regular expression, work in progress, program]
 ---
