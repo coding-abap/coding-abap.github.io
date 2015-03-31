@@ -27,8 +27,8 @@ html(lang='en')
     nav#flybar
       ul
         li#logo
-          a(href=locals.url, alt=locals.name)
-            img(src=locals.url+'/img/Coding Abap Logo Only.svg')
+          a(href='/', alt=locals.name)
+            img(src='/img/Coding Abap Logo Only.svg')
               
         li
           a(href=locals.url+'/archive.html') Archive
@@ -54,13 +54,14 @@ html(lang='en')
         //-   ul
         //-     li
         //-       a(href='https://github.com/jnordberg/wintersmith') Wintersmith 2.1
+          a(href='/archive.html') Archive
     
     header.header
       div.content-wrap
         block header
           div.logo
             h1
-              a(href=locals.url)= locals.name
+              a(href='/')= locals.name
             p.description= locals.description
       
     div#content
