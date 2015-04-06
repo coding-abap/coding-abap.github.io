@@ -1,15 +1,17 @@
-@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:700,700italic,400italic,400);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,700italic,400italic,400);
 @import url(http://fonts.googleapis.com/css?family=Merriweather:700,700italic,400italic,400);
-@import url(http://fonts.googleapis.com/css?family=Coming+Soon);
-@import url(http://fonts.googleapis.com/css?family=Fredericka+the+Great);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+@import url(http://fonts.googleapis.com/css?family=Patrick+Hand+SC);
 
+/*Logo*/
+@import url(http://fonts.googleapis.com/css?family=Fredericka+the+Great);
 
 h1, h2, h3, h4, h5, h6, p, body, a, img, ul, ol, blockquote, pre {
   margin: 0; padding: 0; border: 0;
 }
 
 body {
-  font-family: 'Merriweather Sans', "Helvetica Neue", Helvetica,Sans;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Sans;
   font-size: 16px;
   line-height: 1.52;
   background-color: #f8f8f8;
@@ -46,13 +48,13 @@ pre {
 }
 
 h1 {
-  font-family: 'Merriweather', cursive;
+  font-family: 'Merriweather', sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
 }
 
 h2 {
-  font-family: 'Merriweather', cursive;
+  font-family: 'Merriweather', sans-serif;
   font-size: 1.2em;
   font-weight: 400;
   line-height: 1.43;
@@ -60,7 +62,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Merriweather', cursive;
+  font-family: 'Merriweather', sans-serif;
   font-style: italic;
   text-align: center;
   font-weight: 400;
@@ -109,9 +111,9 @@ hr {
 }
 
 .header .author {
-  font-family: 'Coming Soon', serif;
-  font-variant: small-caps;
-  text-transform: lowercase;
+  font-family: 'Patrick Hand SC', cursive;
+  /*font-variant: small-caps;
+  text-transform: lowercase;*/
   text-rendering: auto;
   text-align: center;
   font-weight: 400;
@@ -203,7 +205,7 @@ footer .copy, footer .copy a {
 
 .article header .date {
   text-align: center;
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin-top: -0.7em;
 }
 
@@ -218,7 +220,7 @@ footer .copy, footer .copy a {
 
 .article.intro .content .more {
   text-decoration: underline;
-  font-weight: 700;
+  /*font-weight: 700;*/
   padding-left: 0.3em;
 }
 
@@ -228,9 +230,9 @@ footer .copy, footer .copy a {
 }
 
 .more, .date {
-  font-family: 'Coming Soon', serif;
-  font-variant: small-caps;
-  text-transform: lowercase;
+  font-family: 'Patrick Hand SC', cursive;
+  /*font-variant: small-caps;
+  text-transform: lowercase;*/
   font-weight: 400;
   text-rendering: auto;
   letter-spacing: 1px;
@@ -278,9 +280,9 @@ footer .copy, footer .copy a {
 .archive .year-label,
 .archive .month-label{
   width: 4em;
-  font-family: 'Fresca', serif;
-  font-variant: small-caps;
-  text-transform: lowercase;
+  font-family: 'Patrick Hand SC', cursive;
+  /*font-variant: small-caps;
+  text-transform: lowercase;*/
   font-weight: 400;
   text-rendering: auto;
   letter-spacing: 1px;
@@ -303,7 +305,7 @@ footer .copy, footer .copy a {
 /* code styling */
 
 code {
-  font-family: 'Ubuntu Mono', 'Source Code Pro-Light', 'Consolas', 'Menlo', monospace;
+  font-family: 'Source Code Pro-Light', 'Consolas', 'Menlo', monospace;
   font-size: 0.90;
   color: #155;
 }
@@ -422,6 +424,13 @@ code.lang-markdown .bullet {
 
 /* CSS only CoffeeScript navbar
   see http://aamirafridi.com/css/pure-css-responsive-menu */
+
+/* Reset*/
+nav > * {
+  margin: 0;
+  paddding: 0;
+}
+
 nav {
   position: fixed;
   display: block;
@@ -432,8 +441,6 @@ nav {
   left: 40px;
   right: 40px;
   top: 25px;
-  font-family: 'Coming Soon', serif;
-  font-weight: 700;
   background: #eee;
   background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#dadada));
   background: -moz-linear-gradient(top, #f8f8f8, #dadada);
@@ -446,16 +453,13 @@ nav {
   -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-}
 
-/* Reset*/
-nav > * {
-  margin: 0;
-  paddding: 0;
-}
-
-nav {
+  font-variant: small-caps;
+  text-transform: lowercase;
   text-decoration: none;
+  font-family: 'Open Sans Condensed', sans;
+  font-weight: 400;
+  font-size: 1.4em;
 }
 
 nav a {
@@ -464,7 +468,6 @@ nav a {
 }
 
 nav a:hover, nav a:visited, nav a:link, nav a:active {
-  text-transform: none;
   text-decoration: none;
   color: black;
 }
@@ -583,6 +586,7 @@ nav ul li#logo img {
   outline: none;
 }
 
+/* Logo */
 .header div .logo {
   display: block;
   outline: none;
