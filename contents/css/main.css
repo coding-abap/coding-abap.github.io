@@ -590,6 +590,29 @@ nav ul li#logo img {
 
 .header div .logo h1{
   font-family: 'Fredericka the Great', cursive;
-	font-size: 6em;
-	font-weight: 400;
+  font-size: 6em;
+  font-weight: 400;
+}
+
+/* Share buttons */
+.share {
+  text-align: center;
+  overflow: hidden;
+}
+
+.share::before {
+  content: "Share with: ["
+}
+
+.share::after {
+  content: "]"
+}
+
+
+.share li {
+  display: inline;
+}
+
+.share li:not(:first-child)::before {
+  content: "|";
 }
