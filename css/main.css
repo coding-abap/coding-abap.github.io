@@ -1,15 +1,17 @@
-@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans:700,700italic,400italic,400);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,700italic,400italic,400);
 @import url(http://fonts.googleapis.com/css?family=Merriweather:700,700italic,400italic,400);
-@import url(http://fonts.googleapis.com/css?family=Coming+Soon);
-@import url(http://fonts.googleapis.com/css?family=Fredericka+the+Great);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+@import url(http://fonts.googleapis.com/css?family=Patrick+Hand+SC);
 
+/*Logo*/
+@import url(http://fonts.googleapis.com/css?family=Fredericka+the+Great);
 
 h1, h2, h3, h4, h5, h6, p, body, a, img, ul, ol, blockquote, pre {
   margin: 0; padding: 0; border: 0;
 }
 
 body {
-  font-family: 'Merriweather Sans', "Helvetica Neue", Helvetica,Sans;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Sans;
   font-size: 16px;
   line-height: 1.52;
   background-color: #f8f8f8;
@@ -46,13 +48,13 @@ pre {
 }
 
 h1 {
-  font-family: 'Merriweather', cursive;
+  font-family: 'Merriweather', sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
 }
 
 h2 {
-  font-family: 'Merriweather', cursive;
+  font-family: 'Merriweather', sans-serif;
   font-size: 1.2em;
   font-weight: 400;
   line-height: 1.43;
@@ -60,7 +62,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Merriweather', cursive;
+  font-family: 'Merriweather', sans-serif;
   font-style: italic;
   text-align: center;
   font-weight: 400;
@@ -109,9 +111,9 @@ hr {
 }
 
 .header .author {
-  font-family: 'Coming Soon', serif;
-  font-variant: small-caps;
-  text-transform: lowercase;
+  font-family: 'Patrick Hand SC', cursive;
+  /*font-variant: small-caps;
+  text-transform: lowercase;*/
   text-rendering: auto;
   text-align: center;
   font-weight: 400;
@@ -203,7 +205,7 @@ footer .copy, footer .copy a {
 
 .article header .date {
   text-align: center;
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin-top: -0.7em;
 }
 
@@ -218,7 +220,7 @@ footer .copy, footer .copy a {
 
 .article.intro .content .more {
   text-decoration: underline;
-  font-weight: 700;
+  /*font-weight: 700;*/
   padding-left: 0.3em;
 }
 
@@ -228,9 +230,9 @@ footer .copy, footer .copy a {
 }
 
 .more, .date {
-  font-family: 'Coming Soon', serif;
-  font-variant: small-caps;
-  text-transform: lowercase;
+  font-family: 'Patrick Hand SC', cursive;
+  /*font-variant: small-caps;
+  text-transform: lowercase;*/
   font-weight: 400;
   text-rendering: auto;
   letter-spacing: 1px;
@@ -278,9 +280,9 @@ footer .copy, footer .copy a {
 .archive .year-label,
 .archive .month-label{
   width: 4em;
-  font-family: 'Fresca', serif;
-  font-variant: small-caps;
-  text-transform: lowercase;
+  font-family: 'Patrick Hand SC', cursive;
+  /*font-variant: small-caps;
+  text-transform: lowercase;*/
   font-weight: 400;
   text-rendering: auto;
   letter-spacing: 1px;
@@ -303,7 +305,7 @@ footer .copy, footer .copy a {
 /* code styling */
 
 code {
-  font-family: 'Ubuntu Mono', 'Source Code Pro-Light', 'Consolas', 'Menlo', monospace;
+  font-family: 'Source Code Pro-Light', 'Consolas', 'Menlo', monospace;
   font-size: 0.90;
   color: #155;
 }
@@ -410,7 +412,7 @@ code.lang-markdown .bullet {
 
 
 
-/* CoffeeScript menu*/
+/* CoffeeScript fadeout*/
 #fadeout {
   z-index: 50;
   position: fixed;
@@ -420,128 +422,201 @@ code.lang-markdown .bullet {
   background: -moz-linear-gradient(top, rgba(255, 255, 255, 255), rgba(255, 255, 255, 0));
 }
 
-#flybar {
-  font-family: 'Coming Soon', serif;
-  font-weight: 700;
+/* CSS only CoffeeScript navbar
+  see http://aamirafridi.com/css/pure-css-responsive-menu */
+
+/* Reset*/
+nav > * {
+  margin: 0;
+  paddding: 0;
+}
+
+nav {
   position: fixed;
+  display: block;
   z-index: 100;
   height: 50px;
+  min-height: 50px;
   min-width: 490px;
-  left: 40px; right: 40px; top: 25px;
-  /*padding-left: 252px;*/
+  left: 40px;
+  right: 40px;
+  top: 25px;
   background: #eee;
   background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#dadada));
   background: -moz-linear-gradient(top, #f8f8f8, #dadada);
   border: 1px solid #aaa;
   border-top: 1px solid #bbb;
   border-bottom: 1px solid #888;
-  -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
-  -webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.1);
-  -moz-box-shadow: 0 3px 5px rgba(0,0,0,0.1);
-  box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+
+  font-variant: small-caps;
+  text-transform: lowercase;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans;
+  font-weight: 400;
+  font-size: 1.4em;
 }
 
-.navigation {
-    height: 50px;
-    line-height: 50px;
-    position: relative;
-    float: left;
-    padding: 0 20px;
-    border-top: 0; border-bottom: 0; border-left-width: 0;
-    cursor: pointer;
-  }
+nav a {
+  padding: 0 20px;
+  display: block;
+}
 
-#flybar > *:not(:first-child) {
+nav a:hover, nav a:visited, nav a:link, nav a:active {
+  text-decoration: none;
+  color: black;
+}
+
+nav ul {
+  margin: 0;
+  line-height: 50px;
+  cursor: pointer;
+  background: #fff;
+}
+
+nav ul li {
+  float: left;
+  display: inline;
+  position: relative;
+  width: 180px;
+}
+
+nav ul li:hover {
+  color: #000;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#fff));
+  background: -moz-linear-gradient(top, #e5e5e5, #fff);
+}
+
+nav ul li:not(:first-child) {
   border-left: 1px solid #aaa;
 }
 
-#flybar > *:last-child {
+nav ul li:last-child {
   border-right: 1px solid #aaa;
 }
 
-#logo {
-    display: block;
-    outline: none;
-  }
+nav ul ul {
+  /*Hide all submenus*/
+  display: none;
+  background: #fff;
+  opacity: 0.97;
+  top: 100%;
+  left: -1px;
+  border: 1px solid #aaa;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border-top: 0;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-left-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
 
-#logo img {
-      margin: 0;
-      height: 50px;
-    }
+nav ul ul ul {
+  border: 0;
+  box-shadow: 0 0 0;
+  border: 1px solid #aaa;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border-left: 0;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-bottom-left-radius: 0;
+  box-shadow: 10 3px 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 10 3px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 10 3px 5px rgba(0, 0, 0, 0.2);
+}
 
-.navigation:hover,
-    .navigation.active {
-      background: #eee;
-      background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#f8f8f8));
-      background: -moz-linear-gradient(top, #eee, #f8f8f8);
-    }
+nav ul ul li {
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
 
-.navigation.active {
-        height: 51px;
-        color: #000;
-        background: -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#fff));
-        background: -moz-linear-gradient(top, #e5e5e5, #fff);
-      }
+nav ul ul a {
+  height: 2em;
+  line-height: 2em;
+  border: 1px solid transparent;
+  border-left: 0;
+  border-right: 0;
+}
 
-.navigation .button {
-      font-weight: 700;
-    }
+nav ul ul li:hover {
+  border-color: #ddd;
+  background: #eee;
+}
+/* Display menus lvl 1*/
 
-.navigation .button::selection {
-        background: transparent;
-      }
+nav li:hover > ul {
+  display: block;
+  position: absolute;
+  z-index: 1000;
+  width: 180px;
+}
+/* Display menus lvl 2*/
 
-.navigation .contents {
-      display: none;
-      position: absolute;
-      background: #fff;
-      opacity: 0.97;
-      top: 51px; left: 0;
-      padding: 5px 0;
-      margin-left: -1px;
-      border: 1px solid #aaa;
-      -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
-      -webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-      -moz-box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-      box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-    }
+nav ul ul li:hover > ul {
+  top: -1px;
+  right: -181px;
+  left: auto;
+}
+/* Navbar Logo */
 
-.navigation .contents a {
-        display: block;
-        text-transform: none;
-        text-decoration: none;
-        height: 12px;
-        line-height: 12px;
-        padding: 4px 10px;
-        border: 1px solid transparent;
-        border-left: 0; border-right: 0;
-      }
+nav ul li#logo {
+  width: 100px;
+  height: 50px;
+}
 
-.navigation .contents a:hover {
-          border-color: #ddd;
-          background: #eee;
-        }
+nav ul li#logo img {
+  height: 50px;
+  outline: none;
+}
 
-.navigation.active .contents {
-        display: block;
-      }
-
-.navigation .contents.menu {
-        border-top: 0;
-        -webkit-border-top-left-radius: 0; -moz-border-radius-topleft: 0; border-top-left-radius: 0;
-        -webkit-border-top-right-radius: 0; -moz-border-radius-topright: 0; border-top-right-radius: 0;
-      }
-
-.header > div > .logo {
+/* Logo */
+.header div .logo {
   display: block;
   outline: none;
-}	  
+}
 
-.header > div > .logo h1{
-    font-family: 'Fredericka the Great', cursive;
-	font-size: 6em;
-	font-weight: 400;
+.header div .logo h1{
+  font-family: 'Fredericka the Great', cursive;
+  font-size: 6em;
+  font-weight: 400;
+}
+
+/* Share buttons */
+.share {
+  text-align: center;
+  overflow: hidden;
+}
+
+.share::before {
+  content: "Share with: ["
+}
+
+.share::after {
+  content: "]"
 }
 
 
-/* see http://aamirafridi.com/css/pure-css-responsive-menu or http://codepen.io/aamirafridi/pen/phKif*/
+.share li {
+  display: inline;
+}
+
+.share li:not(:first-child)::before {
+  content: "|";
+}

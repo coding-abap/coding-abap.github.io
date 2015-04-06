@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width">
     <title>Coding Abap
     </title>
-    <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Ramblings of an immor(t)al demigod">
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Abap blog">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/github.css">
     <!--workaroud -> node highlight doesn't add hljs class to pre, so css fails-->
@@ -14,24 +14,17 @@
   </head>
   <body>
     <div id="fadeout"></div>
-    <div id="flybar">
-      <div class="navigation">
-        <div class="button"><a id="logo" href="http://localhost:8080" alt="Coding Abap"><img src="http://localhost:8080/img/Coding Abap Logo Only.svg"></a></div>
-      </div>
-      <div class="navigation">
-        <div class="button"><span>Menu1</span></div>
-        <div class="contents menu"><a href="https://github.com/jnordberg/wintersmith">Wintersmith1</a><a href="https://github.com/jnordberg/wintersmith">Wintersmith2</a></div>
-      </div>
-      <div class="navigation">
-        <div class="button"><span>Menu2</span></div>
-        <div class="contents menu"><a href="https://github.com/jnordberg/wintersmith">Wintersmith3</a><a href="https://github.com/jnordberg/wintersmith">Wintersmith4</a></div>
-      </div>
-    </div>
+    <nav id="flybar">
+      <ul>
+        <li id="logo"><a href="/" alt="Coding Abap"><img src="/img/Coding Abap Logo Only.svg"></a></li>
+        <li><a href="/archive.html">Archive</a></li>
+      </ul>
+    </nav>
     <header class="header">
       <div class="content-wrap">
         <div class="logo">
-          <h1><a href="http://localhost:8080">Coding Abap</a></h1>
-          <p class="description">Ramblings of an immor(t)al demigod</p>
+          <h1><a href="/">Coding Abap</a></h1>
+          <p class="description">Abap blog</p>
         </div>
       </div>
     </header>
@@ -49,7 +42,7 @@
         </article>
         <article class="article intro">
           <header>
-            <p class="date"><span>01. January 1970</span></p>
+            <p class="date"><span>10. January 2015</span></p>
             <h2><a href="/articles/regular-expressions/">Regular expressions</a></h2>
           </header>
           <section class="content"><p>To play with regular expressions in <span class="caps">ABAP</span>, see program <code>demo_regex_toy</code></p>
@@ -63,16 +56,7 @@
       <div class="content-wrap">
         <div class="nav"><a href="/archive.html">« Archives</a>
         </div>
-        <section class="about"><p>Wintersmith is made by <a href="http://johan-nordberg.com">Johan Nordberg</a> and licensed under the <a href="http://opensource.org/licenses/MIT">MIT-license</a>.
-This footer text can be edited in about.md</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat.</p>
-<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-dolore eu fugiat nulla pariatur.</p>
-<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-deserunt mollit anim id est laborum.</p>
+        <section class="about"><p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 
         </section>
         <section class="copy">
@@ -81,6 +65,16 @@ deserunt mollit anim id est laborum.</p>
         </section>
       </div>
     </footer>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-58148769-2', 'auto');
+      //ga('require', 'displayfeatures');
+      ga('send', 'pageview');
+      
+    </script>
     <!--workaroud -> node highlight doesn't add hljs class to pre, so css fails-->
     <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
   </body>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coding Abap</title>
-    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://localhost:8080</link>
-    <description>Ramblings of an immor(t)al demigod</description>
+    <atom:link href="http://coding-abap.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://coding-abap.github.io</link>
+    <description>Abap blog</description>
     <pubDate>Wed, 14 Jan 2015 01:00:00 +0100</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>File Filter</title>
-      <link>http://localhost:8080/articles/file-filter/</link>
+      <link>http://coding-abap.github.io/articles/file-filter/</link>
       <pubDate>Wed, 14 Jan 2015 01:00:00 +0100</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/file-filter/</guid>
+      <guid isPermaLink="true">http://coding-abap.github.io/articles/file-filter/</guid>
       <author></author>
       <description>&lt;p&gt;Do you remember the exact string to set a file filter in ABAP file chooser? I don’t, but class &lt;code&gt;cl_gui_frontend_services&lt;/code&gt; has some nice predefined class atributes&lt;/p&gt;
 &lt;hr&gt;
@@ -41,15 +41,15 @@ FILETYPE_POWERPOINT = &lt;span class=&quot;string&quot;&gt;'Microsoft PowerPoint
     not_supported_by_gui    = &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;
     OTHERS                  = &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt; ).
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Extra point for supporting MS Office multiple file extensions&lt;/p&gt;
+&lt;p&gt;Extra point for supporting multiple file extensions&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/articles/file-filter/file_filter.png&quot; alt=&quot;Excel file filter in action&quot;&gt;&lt;/p&gt;
 </description>
     </item>
     <item>
       <title>Regular expressions</title>
-      <link>http://localhost:8080/articles/regular-expressions/</link>
-      <pubDate>Thu, 01 Jan 1970 01:00:00 +0100</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/regular-expressions/</guid>
+      <link>http://coding-abap.github.io/articles/regular-expressions/</link>
+      <pubDate>Sat, 10 Jan 2015 01:00:00 +0100</pubDate>
+      <guid isPermaLink="true">http://coding-abap.github.io/articles/regular-expressions/</guid>
       <author></author>
       <description>&lt;p&gt;To play with regular expressions in ABAP, see program &lt;code&gt;demo_regex_toy&lt;/code&gt;&lt;/p&gt;
 &lt;hr&gt;
