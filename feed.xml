@@ -5,9 +5,190 @@
     <atom:link href="http://coding-abap.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://coding-abap.github.io</link>
     <description>Abap blog</description>
-    <pubDate>Wed, 14 Jan 2015 01:00:00 +0100</pubDate>
+    <pubDate>Thu, 23 Apr 2015 02:00:00 +0200</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Dynamic Programming</title>
+      <link>http://coding-abap.github.io/articles/dynamic-programming/</link>
+      <pubDate>Thu, 23 Apr 2015 02:00:00 +0200</pubDate>
+      <guid isPermaLink="true">http://coding-abap.github.io/articles/dynamic-programming/</guid>
+      <author></author>
+      <description>&lt;p&gt;Reading &lt;a href=&quot;http://help.sap.com/abapdocu_740/en/abennews-710-others.htm#!ABAP_MODIFICATION_9@9@&quot;&gt;SAP docs&lt;/a&gt;,  I’ve found &lt;code&gt;CL_ABAP_DYN_PRG&lt;/code&gt;, an utility class for dynamic programming.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;class-cl_abap_dyn_prg-&quot;&gt;Class &lt;code&gt;CL_ABAP_DYN_PRG&lt;/code&gt;&lt;/h1&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;Method Name&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_INT_VALUE&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether the input is a valid integer (optional sign)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;ESCAPE_QUOTES&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Escape single quotes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;ESCAPE_QUOTES_STR&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Escape backquotes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;QUOTE&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Put single quotes around the value and escape single quotes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;QUOTE_STR&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Put backquotes around the value and escape backquotes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_COLUMN_NAME&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether the input can be a column name&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_VARIABLE_NAME&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether the input can be a variable name&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_TABLE_NAME_STR&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether the input is a DB table name, check package&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_TABLE_NAME_TAB&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether the input is a DB table name, check package&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_TABLE_OR_VIEW_NAME_STR&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether input is DB table or view name, check package&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_WHITELIST_STR&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether the input is in a whitelist (string version)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_WHITELIST_TAB&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether the input is in a whitelist (table version)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_TABLE_OR_VIEW_NAME_TAB&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether input is DB table or view name, check package&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;ESCAPE_XSS_XML_HTML&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Escape XML/HTML string for XSS safety&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;ESCAPE_XSS_JAVASCRIPT&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Escape Javascript string for XSS safety&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;ESCAPE_XSS_CSS&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Escape Cascading Style Sheets string for XSS safety&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;ESCAPE_XSS_URL&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Escape URL string for XSS safety&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_CHAR_LITERAL&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether the input is a valid type c literal&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;CHECK_STRING_LITERAL&lt;/td&gt;
+&lt;td style=&quot;text-align:left&quot;&gt;Check whether the input is a valid type string literal&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&quot;handling-of-literal-values-in-conditions&quot;&gt;Handling of literal values in conditions&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;ESCAPE_QUOTES*&lt;/code&gt; and &lt;code&gt;QUOTE*&lt;/code&gt; methods are useful to sanitize dynamic where clauses&lt;/p&gt;
+&lt;p&gt;Without proper input sanitization an SQL exception will raise&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-abap&quot;&gt;FORM sql_error.
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;DATA&lt;/span&gt;&lt;/span&gt;:
+    lv_where &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;TYPE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;VALUE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`name1 = '$CITY'`&lt;/span&gt;. &lt;span class=&quot;comment&quot;&gt;&quot;Dynamic condition&lt;/span&gt;
+
+  &lt;span class=&quot;comment&quot;&gt;&quot;Dirty input with invalid characters&lt;/span&gt;
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;REPLACE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;'$CITY'&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;IN&lt;/span&gt;&lt;/span&gt; lv_where &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WITH&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`O'Reilly`&lt;/span&gt;.
+  &lt;span class=&quot;comment&quot;&gt;&quot;where clause: name1 = 'O'Reilly'&lt;/span&gt;
+
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;TRY&lt;/span&gt;&lt;/span&gt; .
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt;&lt;/span&gt; COUNT(*)
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt;&lt;/span&gt; t001w
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WHERE&lt;/span&gt;&lt;/span&gt; (lv_where).
+    &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CATCH&lt;/span&gt;&lt;/span&gt; cx_root.
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WRITE&lt;/span&gt;&lt;/span&gt;: / &lt;span class=&quot;string&quot;&gt;'Dirty Query - SQL Error'&lt;/span&gt;.
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ENDTRY&lt;/span&gt;&lt;/span&gt;.
+ENDFORM.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Dirty Query - SQL Error&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Or worse, there is an SQL Injection open door&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-abap&quot;&gt;FORM sql_injection.
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;DATA&lt;/span&gt;&lt;/span&gt;:
+    lv_where &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;TYPE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;VALUE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`name1 = '$CITY'`&lt;/span&gt;. &lt;span class=&quot;comment&quot;&gt;&quot;Dynamic condition&lt;/span&gt;
+
+  &lt;span class=&quot;comment&quot;&gt;&quot;Forged query to exploit an SQL Injection&lt;/span&gt;
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;REPLACE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;'$CITY'&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;IN&lt;/span&gt;&lt;/span&gt; lv_where &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WITH&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`' OR name1 &amp;lt;&amp;gt; '`&lt;/span&gt;.
+  &lt;span class=&quot;comment&quot;&gt;&quot;where clause: name1 = ' ' OR name1 &amp;lt;&amp;gt; ''&lt;/span&gt;
+
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;TRY&lt;/span&gt;&lt;/span&gt; .
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt;&lt;/span&gt; COUNT(*)
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt;&lt;/span&gt; t001w
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WHERE&lt;/span&gt;&lt;/span&gt; (lv_where).
+
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WRITE&lt;/span&gt;&lt;/span&gt;: / &lt;span class=&quot;string&quot;&gt;'SQL Injection. Number of entries = '&lt;/span&gt; , sy-dbcnt.
+    &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CATCH&lt;/span&gt;&lt;/span&gt; cx_root.
+      &lt;span class=&quot;comment&quot;&gt;&quot;...&lt;/span&gt;
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ENDTRY&lt;/span&gt;&lt;/span&gt;.
+ENDFORM.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;SQL Injection. Number of entries = 127&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is really dangerous, we could be exposing sensible data. Input sanitization is mandatory&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-abap&quot;&gt;FORM sql_sanitized.
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;DATA&lt;/span&gt;&lt;/span&gt;:
+    lv_where &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;TYPE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;string&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;VALUE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`name1 = '$CITY'`&lt;/span&gt;. &lt;span class=&quot;comment&quot;&gt;&quot;Dynamic condition&lt;/span&gt;
+
+  &lt;span class=&quot;comment&quot;&gt;&quot;Sanitize input&lt;/span&gt;
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;REPLACE&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;'$CITY'&lt;/span&gt; &lt;span class=&quot;operator&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;IN&lt;/span&gt;&lt;/span&gt; lv_where &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WITH&lt;/span&gt;&lt;/span&gt; cl_abap_dyn_prg=&amp;gt;escape_quotes( &lt;span class=&quot;string&quot;&gt;`O'Reilly`&lt;/span&gt; ).
+  &lt;span class=&quot;comment&quot;&gt;&quot;where clause: name1 = 'O''Reilly'&lt;/span&gt;
+
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;TRY&lt;/span&gt;&lt;/span&gt; .
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt;&lt;/span&gt; COUNT(*)
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FROM&lt;/span&gt;&lt;/span&gt; t001w
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WHERE&lt;/span&gt;&lt;/span&gt; (lv_where).
+
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;WRITE&lt;/span&gt;&lt;/span&gt;: / &lt;span class=&quot;string&quot;&gt;'Sanitized Query - OK. Number of entries = '&lt;/span&gt; , sy-dbcnt.
+    &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CATCH&lt;/span&gt;&lt;/span&gt; cx_root.
+      &lt;span class=&quot;comment&quot;&gt;&quot;...&lt;/span&gt;
+  &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ENDTRY&lt;/span&gt;&lt;/span&gt;.
+ENDFORM.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Sanitized Query - OK. Number of entries = 0&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As expected, we have no results&lt;/p&gt;
+&lt;h2 id=&quot;handling-of-column-and-variable-names&quot;&gt;Handling of column and variable names&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;CHECK_COLUMN*&lt;/code&gt;, &lt;code&gt;CHECK_VARIABLE*&lt;/code&gt; and &lt;code&gt;CHECK_TABLE*&lt;/code&gt; methods are used to check
+identifiers generated at runtime.&lt;/p&gt;
+&lt;h2 id=&quot;other&quot;&gt;Other&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;ESCAPE_XSS*&lt;/code&gt; methods are mandatory to avoid &lt;strong&gt;XSS injection&lt;/strong&gt; in external resources&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;CHECK_INT*&lt;/code&gt;, &lt;code&gt;CHECK_CHAR*&lt;/code&gt; and &lt;code&gt;CHECK_STRING*&lt;/code&gt; are general purpose methods useful in some use cases&lt;/p&gt;
+&lt;h3 id=&quot;more-info&quot;&gt;More info&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Class Documentation or&lt;/em&gt; &lt;a href=&quot;https://www.consolut.com/en/s/sap-ides-access/d/s/doc/N-CL_ABAP_DYN_PRG&quot;&gt;Consolut - CL_ABAP_DYN_PRG&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;source&quot;&gt;Source&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Further Changes in 7.0, EhP2&lt;/em&gt; &lt;a href=&quot;http://help.sap.com/abapdocu_740/en/abennews-710-others.htm#!ABAP_MODIFICATION_9@9@&quot;&gt;SAP docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     <item>
       <title>File Filter</title>
       <link>http://coding-abap.github.io/articles/file-filter/</link>
