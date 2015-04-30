@@ -92,6 +92,26 @@ hr {
   margin: 1.6em 0;
 }
 
+table, th, td {
+   border: 1px solid #dedede;
+}
+
+table {
+    border-collapse: collapse;
+	margin-bottom: 1em;
+	box-shadow: 0px 0px 4px rgba(0,0,0,0.23);
+}
+
+td {
+    padding: 0.5em;
+	background-color: white;
+}
+
+th {
+	padding: 0.5em;
+    background-color: #dedede;
+}
+
 /* page header */
 
 .header {
