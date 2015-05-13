@@ -5,9 +5,82 @@
     <atom:link href="http://coding-abap.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://coding-abap.github.io</link>
     <description>Abap blog</description>
-    <pubDate>Thu, 23 Apr 2015 02:00:00 +0200</pubDate>
+    <pubDate>Mon, 11 May 2015 02:00:00 +0200</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Param Hell</title>
+      <link>http://coding-abap.github.io/articles/param-hell/</link>
+      <pubDate>Mon, 11 May 2015 02:00:00 +0200</pubDate>
+      <guid isPermaLink="true">http://coding-abap.github.io/articles/param-hell/</guid>
+      <author></author>
+      <description>&lt;p&gt;Loose typing and work with output parameters in function/method inner logic may be fatal&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;the-story&quot;&gt;The Story&lt;/h1&gt;
+&lt;p&gt;I was looking for a function to get month’s name from a date and I found &lt;code&gt;HR_IN_GET_DATE_COMPONENTS&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://coding-abap.github.io/articles/param-hell/hr_in_get_date_components.png&quot; alt=&quot;Playing with `HR_IN_GET_DATE_COMPONENTS` in test mode&quot;&gt;&lt;/p&gt;
+&lt;p&gt;In test mode it looked good and I wrote something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-abap&quot;&gt;    &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CALL&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FUNCTION&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;'HR_IN_GET_DATE_COMPONENTS'&lt;/span&gt;
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;EXPORTING&lt;/span&gt;&lt;/span&gt;
+        idate                         = &lt;span class=&quot;string&quot;&gt;`20150101`&lt;/span&gt; 
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;IMPORTING&lt;/span&gt;&lt;/span&gt;
+        ltext                         = lv_month_name
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;EXCEPTIONS&lt;/span&gt;&lt;/span&gt;
+        input_date_is_initial         = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;
+        text_for_month_not_maintained = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;sy-subrc = 2&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Oh, oh! In test mode I got ‘January’, but now I get a &lt;code&gt;text_for_month_not_maintained&lt;/code&gt; exception.&lt;/p&gt;
+&lt;h1 id=&quot;error-error-error-success&quot;&gt;Error * Error * Error = Success&lt;/h1&gt;
+&lt;p&gt;I’ve debugged the code and found something weird&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://coding-abap.github.io/articles/param-hell/call_without_param.png&quot; alt=&quot;Calling `HR_IN_GET_DATE_COMPONENTS` without all params&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Problems:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;MONTH&lt;/code&gt; is defined as &lt;code&gt;REFERENCE(MONTH) TYPE  C&lt;/code&gt; in function header, without lenght, but in line 36 is used as a lenght 2 char.&lt;/li&gt;
+&lt;li&gt;Use exporting params as working variables&lt;/li&gt;
+&lt;li&gt;But the worst thing, related to problem #1, is that the type of the exporting params changes depending on which parameters are assigned &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Call the function with all export params fixed the problem&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-abap&quot;&gt;    &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CALL&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FUNCTION&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;'HR_IN_GET_DATE_COMPONENTS'&lt;/span&gt;
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;EXPORTING&lt;/span&gt;&lt;/span&gt;
+        idate                         = &lt;span class=&quot;string&quot;&gt;`20150101`&lt;/span&gt; 
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;IMPORTING&lt;/span&gt;&lt;/span&gt;
+        day                           = lv_day 
+        month                         = lv_month
+        year                          = lv_year 
+        ltext                         = lv_month_name
+      &lt;span class=&quot;simple&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;EXCEPTIONS&lt;/span&gt;&lt;/span&gt;
+        input_date_is_initial         = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;
+        text_for_month_not_maintained = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;January&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Here, there are the same problems, but &lt;code&gt;MONTH&lt;/code&gt; is supplied and now its type is &lt;code&gt;CHAR2&lt;/code&gt;, so everything is OK&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://coding-abap.github.io/articles/param-hell/call_with_param.png&quot; alt=&quot;Calling `HR_IN_GET_DATE_COMPONENTS` with all export params&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;epiologue&quot;&gt;Epiologue&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Don’t be lazy, proper typing is mandatory&lt;ul&gt;
+&lt;li&gt;If you try to avoid unnecesary casting before function/method calls you can loose typing but you MUST cast ASAP to a typed variable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Don’t trust function test mode&lt;ul&gt;
+&lt;li&gt;In test mode, system is calling conversion routines under the hood&lt;/li&gt;
+&lt;li&gt;In test mode, all params are supplied and params type may be “not obvious” &lt;img src=&quot;http://coding-abap.github.io/articles/param-hell/function_test_mode_typing.png&quot; alt=&quot;Function test mode with stange param type&quot;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Using paramas as working variables may be harmful&lt;ul&gt;
+&lt;li&gt;Clear exporting params ASAP&lt;/li&gt;
+&lt;li&gt;Use local variables instead params for inner logic.
+Proper typing may mitigate this, but think in params as initial/final state and bind intermediate states (inner logic) to local variables.
+In case of error or unexpected behavior, it’s safer maintain output params unpolluted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     <item>
       <title>Dynamic Programming</title>
       <link>http://coding-abap.github.io/articles/dynamic-programming/</link>

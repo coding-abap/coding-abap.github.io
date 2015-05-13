@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Param Hell - Coding Abap
+    </title>
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="Abap blog">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/github.css">
+    <!--workaroud -> node highlight doesn't add hljs class to pre, so css fails-->
+    <script src="/js/highlight.pack.js"></script>
+  </head>
+  <body class="article-detail">
+    <div id="fadeout"></div>
+    <nav id="flybar">
+      <ul>
+        <li id="logo"><a href="/" alt="Coding Abap"><img src="/img/Coding Abap Logo Only.svg"></a></li>
+        <li><a href="/archive.html">Archive</a></li>
+      </ul>
+    </nav>
+    <header class="header">
+      <div class="content-wrap">
+        <h1>Param Hell</h1>
+        <p class="author">Written by <span class="author"><a href="mailto:diesire@gmail.com">Diesire</a></span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">       
+          <section class="content"><p>Loose typing and work with output parameters in function/method inner logic may be&nbsp;fatal</p>
+<hr>
+<h1 id="the-story">The&nbsp;Story</h1>
+<p>I was looking for a function to get month’s name from a date and I found <code>HR_IN_GET_DATE_COMPONENTS</code>.</p>
+<p><img src="/articles/param-hell/hr_in_get_date_components.png" alt="Playing with `HR_IN_GET_DATE_COMPONENTS` in test mode"></p>
+<p>In test mode it looked good and I wrote something like&nbsp;this:</p>
+<pre><code class="lang-abap">    <span class="simple"><span class="keyword"><span class="caps">CALL</span></span></span> <span class="simple"><span class="keyword"><span class="caps">FUNCTION</span></span></span> <span class="string">'HR_IN_GET_DATE_COMPONENTS'</span>
+      <span class="simple"><span class="keyword"><span class="caps">EXPORTING</span></span></span>
+        idate                         = <span class="string">`20150101`</span> 
+      <span class="simple"><span class="keyword"><span class="caps">IMPORTING</span></span></span>
+        ltext                         = lv_month_name
+      <span class="simple"><span class="keyword"><span class="caps">EXCEPTIONS</span></span></span>
+        input_date_is_initial         = <span class="number">1</span>
+        text_for_month_not_maintained = <span class="number">2</span>.
+</code></pre>
+<blockquote>
+<p><code>sy-subrc = 2</code></p>
+</blockquote>
+<p>Oh, oh! In test mode I got ‘January’, but now I get a <code>text_for_month_not_maintained</code> exception.</p>
+<h1 id="error-error-error-success">Error * Error * Error =&nbsp;Success</h1>
+<p>I’ve debugged the code and found something&nbsp;weird</p>
+<p><img src="/articles/param-hell/call_without_param.png" alt="Calling `HR_IN_GET_DATE_COMPONENTS` without all params"></p>
+<p>Problems:</p>
+<ol>
+<li><code>MONTH</code> is defined as <code>REFERENCE(MONTH) TYPE  C</code> in function header, without lenght, but in line 36 is used as a lenght 2&nbsp;char.</li>
+<li>Use exporting params as working&nbsp;variables</li>
+<li>But the worst thing, related to problem #1, is that the type of the exporting params changes depending on which parameters are&nbsp;assigned </li>
+</ol>
+<p>Call the function with all export params fixed the&nbsp;problem</p>
+<pre><code class="lang-abap">    <span class="simple"><span class="keyword"><span class="caps">CALL</span></span></span> <span class="simple"><span class="keyword"><span class="caps">FUNCTION</span></span></span> <span class="string">'HR_IN_GET_DATE_COMPONENTS'</span>
+      <span class="simple"><span class="keyword"><span class="caps">EXPORTING</span></span></span>
+        idate                         = <span class="string">`20150101`</span> 
+      <span class="simple"><span class="keyword"><span class="caps">IMPORTING</span></span></span>
+        day                           = lv_day 
+        month                         = lv_month
+        year                          = lv_year 
+        ltext                         = lv_month_name
+      <span class="simple"><span class="keyword"><span class="caps">EXCEPTIONS</span></span></span>
+        input_date_is_initial         = <span class="number">1</span>
+        text_for_month_not_maintained = <span class="number">2</span>.
+</code></pre>
+<blockquote>
+<p><code>January</code></p>
+</blockquote>
+<p>Here, there are the same problems, but <code>MONTH</code> is supplied and now its type is <code>CHAR2</code>, so everything is&nbsp;<span class="caps">OK</span></p>
+<p><img src="/articles/param-hell/call_with_param.png" alt="Calling `HR_IN_GET_DATE_COMPONENTS` with all export params"></p>
+<h1 id="epiologue">Epiologue</h1>
+<ul>
+<li>Don’t be lazy, proper typing is mandatory<ul>
+<li>If you try to avoid unnecesary casting before function/method calls you can loose typing but you <span class="caps">MUST</span> cast ASAP to a typed&nbsp;variable.</li>
+</ul>
+</li>
+<li>Don’t trust function test mode<ul>
+<li>In test mode, system is calling conversion routines under the&nbsp;hood</li>
+<li>In test mode, all params are supplied and params type may be “not obvious” <img src="/articles/param-hell/function_test_mode_typing.png" alt="Function test mode with stange param type"></li>
+</ul>
+</li>
+<li>Using paramas as working variables may be harmful<ul>
+<li>Clear exporting params&nbsp;<span class="caps">ASAP</span></li>
+<li>Use local variables instead params for inner logic.
+Proper typing may mitigate this, but think in params as initial/final state and bind intermediate states (inner logic) to local variables.
+In case of error or unexpected behavior, it’s safer maintain output params&nbsp;unpolluted</li>
+</ul>
+</li>
+</ul>
+</section>
+        </article>
+        <ul class="share">
+          <li class="share-googleplus"><a href="https://plus.google.com/share?url=http://coding-abap.github.io/articles/param-hell/" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Google+</a></li>
+          <li class="share-twitter"><a href="https://twitter.com/home?status=http://coding-abap.github.io/articles/param-hell/" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Twitter</a></li>
+          <li class="share-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=http://coding-abap.github.io/articles/param-hell/" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Facebook</a></li>
+          <li class="share-linkedin"><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://coding-abap.github.io/articles/param-hell/&amp;title=Param%20Hell&amp;summary=template&amp;source=Coding Abap" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Linkedin</a></li>
+        </ul>
+        <div id="disqus_thread"></div>
+        <script>
+          //- Disqus code snippet
+          (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//codingabap.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <section class="about"><p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+
+        </section>
+        <section class="copy">
+          <p>&copy; 2015 Coding Abap &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-58148769-2', 'auto');
+      //ga('require', 'displayfeatures');
+      ga('send', 'pageview');
+      
+    </script>
+    <!--workaroud -> node highlight doesn't add hljs class to pre, so css fails-->
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
